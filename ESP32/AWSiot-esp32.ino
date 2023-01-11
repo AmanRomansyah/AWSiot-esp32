@@ -4,8 +4,8 @@
 #include <ArduinoJson.h>
 #include "WiFi.h"
 
-const char *WIFI_SSID = "KING";
-const char *WIFI_PASSWORD = "nnameking";
+const char *WIFI_SSID = "*****";
+const char *WIFI_PASSWORD = "******";
 
 #define DEVICE_NAME "my-arduino-device"
 
