@@ -1,2 +1,2 @@
 # AWSiot-esp32
-my experiment to send sensor data using esp32 using the data transmission protocol with mqtt on AWSiot
+My experiment involves sending sensor data using an ESP32, utilizing the MQTT data transmission protocol, and connecting to AWS IoT.
