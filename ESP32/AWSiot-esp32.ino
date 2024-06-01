@@ -24,7 +24,23 @@ void setup() {
   connectToAWS();
 }
 void loop() {
-  sendJsonToAWS();
+ StaticJsonDocument<128> jsonDoc;
+  JsonObject stateObj = jsonDoc.createNestedObject("state");
+  JsonObject reportedObj = stateObj.createNestedObject("reported");
+  
+  reportedObj["temperature"] = 23.76;
+  reportedObj["humidity"] = 78.12;
+  reportedObj["wifi_strength"] = WiFi.RSSI();
+
+  JsonObject locationObj = reportedObj.createNestedObject("location");
+  locationObj["name"] = "Garden";
+
+  Serial.println("Publishing message to AWS...");
+  //serializeJson(doc, Serial);
+  char jsonBuffer[512];
+  serializeJson(jsonDoc, jsonBuffer);
+
+  client.publish(AWS_IOT_TOPIC, jsonBuffer);
   client.loop();
   delay(1000);
 }
